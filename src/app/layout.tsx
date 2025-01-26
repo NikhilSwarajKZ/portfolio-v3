@@ -1,16 +1,13 @@
-import '@styles/globals.css'
-import { Inter, Playfair_Display } from 'next/font/google'
-import { ThemeProvider } from '@/components/theme-provider'
-import { Header } from '@/components/header'
-import { Footer } from '@/components/footer'
-import { CustomCursor } from '@/components/custom-cursor'
+import type { Metadata } from "next"
+import { Inter } from "next/font/google"
+import { Nav } from "@/components/nav"
+import "./globals.css"
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
+const inter = Inter({ subsets: ["latin"] })
 
-export const metadata = {
-  title: 'Nikhil Swaraj - Software Developer',
-  description: 'Full-stack Developer specializing in JavaScript, TypeScript, and Python',
+export const metadata: Metadata = {
+  title: "Nikhil Swaraj - Software Developer",
+  description: "Software Developer & Cyber Security Enthusiast",
 }
 
 export default function RootLayout({
@@ -19,16 +16,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${playfair.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <CustomCursor />
-          <div className="flex flex-col min-h-screen bg-background">
-            <Header />
-            <main className="flex-grow">{children}</main>
-            <Footer />
-          </div>
-        </ThemeProvider>
+    <html lang="en" className="dark">
+      <body className={`${inter.className} bg-[#1B2A4A] text-white min-h-screen`}>
+        <Nav />
+        {children}
       </body>
     </html>
   )
